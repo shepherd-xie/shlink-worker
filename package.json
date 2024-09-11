@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "npm run build && wrangler pages dev ./dist",
-    "deploy": "npm run build && wrangler pages deploy ./dist"
+    "deploy": "npm run build && wrangler pages deploy ./dist",
+    "initdb": "wrangler d1 execute shlink_db --remote --file=setup.sql"
   },
   "dependencies": {
+    "clipboard": "^2.0.11",
+    "element-plus": "^2.8.2",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },
