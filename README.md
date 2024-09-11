@@ -1,29 +1,15 @@
 # shlink-worker
 
-This template should help get you started developing with Vue 3 in Vite.
+基于 `CloudFlare` 搭建的一个短链生成工具。
 
-## Recommended IDE Setup
+使用 `CloudFlare R1` + `CloudFlare Pages` + `Vue3` 编写。
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 使用方法：
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+1. 克隆本项目
+2. `npm install`
+3. 登录 `CloudFlare`
+4. `npm run deploy`
+5. 在 `CloudFlare R1` 中创建数据库 `shlink_db` 并执行 [setup.sql](./setup.sql)
+6. 在 `Workers & Pages` - `shlink-worker` - `Settings` - `Environment variables` 下添加变量 `SECRET_TOKEN`
+7. 重新执行 `npm run deploy`
