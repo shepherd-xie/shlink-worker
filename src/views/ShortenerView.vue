@@ -2,13 +2,13 @@
   <div>
     <h2>Generate Short URL</h2>
     <el-form label-width="auto" style="max-width: 600px">
-      <el-input v-model="originalUrl" type="textarea" placeholder="Enter original URL"/>
+      <el-input v-model="url" type="textarea" placeholder="Enter original URL"/>
       <el-input v-model="slug" type="text" placeholder="Enter custom slug (optional)"/>
       <button @click="generateShortUrl">Generate</button>
     </el-form>
 
-    <div v-if="shortUrl">
-      <p>Short URL: <a :href="shortUrl" target="_blank">{{ shortUrl }}</a></p>
+    <div v-if="link">
+      <p>Short URL: <a :href="link" target="_blank">{{ link }}</a></p>
       <button @click="copyToClipboard">Copy to Clipboard</button>
     </div>
   </div>
@@ -20,15 +20,15 @@ import Clipboard from 'clipboard';
 export default {
   data() {
     return {
-      originalUrl: '',
+      url: '',
       slug: '',
-      shortUrl: ''
+      link: ''
     };
   },
   methods: {
     async generateShortUrl() {
       const body = {
-        originalUrl: this.originalUrl,
+        url: this.url,
         slug: this.slug
       };
       const token = localStorage.getItem('token');
@@ -42,7 +42,7 @@ export default {
       })
           .then(res => res.json())
           .then(response => {
-            this.shortUrl = response.shortUrl;
+            this.link = response.link;
           })
     },
     copyToClipboard() {

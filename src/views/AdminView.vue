@@ -25,14 +25,17 @@
 export default {
   data() {
     return {
-      links: []
+      links: [],
+      storageToken: ''
     };
   },
   mounted() {
     this.fetchLinks();
+    this.storageToken = localStorage.getItem('token');
   },
   methods: {
     async fetchLinks() {
+      console.log(this.storageToken)
       const token = localStorage.getItem('token')
       fetch('/api/links', {
         method: 'get',
